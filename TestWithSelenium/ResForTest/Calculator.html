@@ -1,0 +1,92 @@
+	<br>
+	<input type = "text" id = "text" value = "" style = "width:217px; height:25px; text-align:right;" readonly = "readonly"  /> 
+	<br>
+	<br>
+	<input type = "button" id = "button1" onclick = "funcButtons(1)" value = "1" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button2" onclick = "funcButtons(2)" value = "2" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button3" onclick = "funcButtons(3)" value = "3" style = "width:40px;height:40px"  />
+	<input type = "button" id = "buttonC" onclick = "funcButtonClerAll()" value = "C" style = "width:40px;height:40px"  /> 
+	<input type = "button" id = "button<==" onclick = "funcButtonCler()" value = "CE" style = "width:40px;height:40px"  />
+	<br>	
+	<input type = "button" id = "button4" onclick = "funcButtons(4)" value = "4" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button5" onclick = "funcButtons(5)" value = "5" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button6" onclick = "funcButtons(6)" value = "6" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button+" onclick = "funcButtonOper('+')" value = "+" style = "width:40px;height:40px"  /> 
+	<input type = "button" id = "button-" onclick = "funcButtonOper('-')" value = "-" style = "width:40px;height:40px"  />
+	<br>	
+	<input type = "button" id = "button7" onclick = "funcButtons(7)" value = "7" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button8" onclick = "funcButtons(8)" value = "8" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button9" onclick = "funcButtons(9)" value = "9" style = "width:40px;height:40px"  />
+	<input type = "button" id = "button*" onclick = "funcButtonOper('*')" value = "*" style = "width:40px;height:40px"  /> 
+	<input type = "button" id = "button/" onclick = "funcButtonOper('/')" value = "/" style = "width:40px;height:40px"  />
+	<br>
+	<input type = "button" id = "button0" onclick = "funcButtons(0)" value = "0" style="width:128px;height:40px" />
+	<input type = "button" id = "button=" onclick = "result()" value = "=" style="width:84px;height:40px"  />	
+	
+	<input type = "hidden" id = "hiddenOper" value = ""/>
+
+
+	<script>
+	
+	var num1 = "";
+	var oper = "";
+	var num2 = "";
+	var resault = "";
+
+	var currentNum = 1;
+
+	function funcButtons(number)
+	{
+		text.value += number;
+		if (currentNum == 1)
+			{
+			num1 = +text.value;
+			}
+		else 
+		{
+			num2 = +text.value;
+		}
+	}
+	
+	function funcButtonOper(op)
+	{
+		text.value = op;
+		oper = op;
+		currentNum = 2;
+		text.value = "";
+		hiddenOper.value = op;
+	}
+	
+	function result()
+	{
+		switch(oper)
+		{
+		case "+": resault = num1 + num2; 
+		break;
+		case "-": resault = num1 - num2; 
+		break;
+		case "*": resault = num1 * num2; 
+		break;
+		case "/": resault = num1 / num2; 
+		break;
+		}
+	   text.value = resault;
+	   num1 = +text.value;
+	   hiddenOper.value = "=";
+	}
+
+	function funcButtonClerAll()
+	{
+		text.value = "";
+		num1 = "";
+		oper = "";
+		num2 = "";
+		currentNum = 1;
+	}
+
+	function funcButtonCler()
+	{
+		text.value = "";
+	}
+	
+	</script>
